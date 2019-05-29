@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aopalliance-repackaged-2.5.0-b42.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/argon2-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/argon2-jvm-2.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-5.0.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-analysis-5.0.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-commons-5.0.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-tree-5.0.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-util-5.0.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bcpkix-jdk15on-1.61.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bcprov-jdk15on-1.61.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/classmate-1.3.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-lang3-3.7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/config-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/cryptacular-1.2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/encryption-api-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/encryption-jnacl-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-validator-6.0.2.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hk2-api-2.5.0-b42.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hk2-locator-2.5.0-b42.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hk2-utils-2.5.0-b42.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javassist-3.22.0-CR2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.annotation-api-1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.el-2.2.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.el-3.0.1-b10.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.el-api-2.2.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.inject-1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.inject-2.5.0-b42.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.json-1.1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.json-api-1.1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.servlet-api-4.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.ws.rs-api-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jboss-logging-3.3.0.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-bean-validation-2.27.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-client-2.27.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-common-2.27.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-container-servlet-core-2.27.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-entity-filtering-2.27.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-hk2-2.27.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-media-jaxb-2.27.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-media-moxy-2.27.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-server-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-server-2.27.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jetty-http-9.4.14.v20181114.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jetty-io-9.4.14.v20181114.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jetty-security-9.4.14.v20181114.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jetty-server-9.4.14.v20181114.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jetty-servlet-9.4.14.v20181114.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jetty-unixsocket-9.4.14.v20181114.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jetty-util-9.4.14.v20181114.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jffi-1.2.16-native.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jffi-1.2.17.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jna-4.5.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jnacl-1.0.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jnr-a64asm-1.0.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jnr-constants-0.9.11.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jnr-enxio-0.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jnr-ffi-2.1.9.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jnr-posix-3.0.46.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jnr-unixsocket-0.20.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jnr-x86asm-1.0.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jul-to-slf4j-1.7.5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/logback-classic-1.0.13.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/logback-core-1.0.13.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.eclipse.persistence.asm-2.7.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.eclipse.persistence.core-2.7.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.eclipse.persistence.moxy-2.7.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/osgi-resource-locator-1.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/security-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/server-api-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/server-utils-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/service-locator-api-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/shared-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/validation-api-2.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.8.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/sqlite-jdbc-3.7.2.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
