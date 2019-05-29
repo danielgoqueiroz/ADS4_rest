@@ -1,15 +1,22 @@
 package br.senac.model;
 
 public class Usuario {
-	int id;
-	int codigoSeguranca;
-	String dataValidade;
-	String login;
-	String numeroCartao;
-	String senha;
+	private int id;
+	private int codigoSeguranca;
+	private String dataValidade;
+	private String login;
+	private String numeroCartao;
+	private String senha;
 	
 	public Usuario() {
 		super();
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public int getCodigoSeguranca() {
 		return codigoSeguranca;
