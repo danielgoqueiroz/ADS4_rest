@@ -2,7 +2,7 @@ package br.senac.model;
 
 public class Item {
 	private int id;
-	private String descricao;
+	private Double descricao;
 	private String detalhe;
 	private String nome;
 	public Item() {
@@ -14,10 +14,10 @@ public class Item {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDescricao() {
+	public Double getDescricao() {
 		return descricao;
 	}
-	public void setDescricao(String descricao) {
+	public void setDescricao(Double descricao) {
 		this.descricao = descricao;
 	}
 	public String getDetalhe() {

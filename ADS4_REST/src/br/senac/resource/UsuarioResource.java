@@ -1,6 +1,5 @@
 package br.senac.resource;
 
-import javax.annotation.Generated;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -10,38 +9,37 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
-import br.senac.model.Pedido;
 import br.senac.model.Usuario;
-import br.senac.service.PedidoService;
+import br.senac.service.UsuarioService;
 
 
-@Path("/pedido")
-public class PedidoResource {
 
-	PedidoService service = new PedidoService();
-	
+@Path("/usuario")
+public class UsuarioResource {
+
+	private static UsuarioService service = new UsuarioService();
+
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response get(@QueryParam("pedido") String id){
-		if (id.isEmpty()) {
+    public Response get(@QueryParam("usuario") String userName){
+		if (userName.isEmpty()) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		} else {
-			Pedido pedido= service.getPedido(id);
-			return Response.ok().entity(pedido).build();
+			Usuario usuario = service.getUser(userName);
+			return Response.ok().entity(usuario).build();
 		}
     }
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(Pedido pedido){
-		if (pedido == null) {
+    public Response save(Usuario usuario){
+		if (usuario == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		} else {
-			Pedido pedidoSalvo = service.savePedio(pedido);
-			return Response.ok().entity(pedidoSalvo).build();
+			Usuario usuarioSalvo = service.saveUser(usuario);
+			return Response.ok().entity(usuarioSalvo).build();
 		}
     }
 	
@@ -55,4 +53,15 @@ public class PedidoResource {
 		}
     }
 	
+	
 }
+
+
+
+
+
+
+
+
+
+

@@ -12,6 +12,10 @@ public class Usuario {
 		super();
 	}
 	
+	public Usuario(String userName) {
+		this.login = userName;
+	}
+
 	public int getId() {
 		return id;
 	}

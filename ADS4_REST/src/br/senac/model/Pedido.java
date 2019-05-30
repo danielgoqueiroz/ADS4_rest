@@ -8,7 +8,7 @@ public class Pedido {
 	private Date data;
 	private Usuario usuario;
 	
-	public Pedido() {
+	public Pedido(Usuario usuario) {
 		super();
 	}
 	public int getId() {

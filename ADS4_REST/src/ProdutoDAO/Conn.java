@@ -30,7 +30,7 @@ public class Conn {
     }
  
 	public static void main(String[] args) {
-		createNewDatabase("teste");
+		createNewDatabase("teste.db");
 	}
 	
 	
