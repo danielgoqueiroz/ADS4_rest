@@ -8,86 +8,92 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Conn {
-	static  String URL = "jdbc:sqlite:D:\\Aluno\\ADS4_rest\\ADS4_REST\\WebContent\\WEB-INF\\db\\teste.db";
+	
+	
+	public static final File DB_FILE =new File("resource/db/pedido.db");
+	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
+	public static Connection connection;
 
-
-	public static void createNewDatabase(String fileName) {
-		File file = new File("resource/db/" + fileName);
-
-		if (file.exists()) {
-
+	public Connection connect() {
+		try {
+			connection = DriverManager.getConnection(URL);
+			System.out.println("Conexão realizada com sucesso.");
+		} catch (SQLException e) {
+			System.err.println("Erro na conexão: " + e.getMessage()+ "\n" + URL);
 		}
+		return connection;
+	}
 
+
+	public static void executeSql(String sql) {
+		try (Connection conn = DriverManager.getConnection(URL);
+				Statement stmt = conn.createStatement()) {
+			stmt.execute(sql);
+			System.out.println("tablea criada");
+		} catch (SQLException e) {
+			System.err.println("Erro ao criar tabela: " + e.getMessage());
+		}
+	}
+
+	public static void createNewDatabase() {
+		if (!DB_FILE.exists()) {
+			DB_FILE.getParentFile().mkdirs();
+			System.out.println("Criou pastas");
+		} else {
+			System.out.println("Pasta já existe.");
+		}
 
 		try (Connection conn = DriverManager.getConnection(URL)) {
 			if (conn != null) {
 				DatabaseMetaData meta = conn.getMetaData();
 				System.out.println("The driver name is " + meta.getDriverName());
-				System.out.println("A new database has been created.");
+				System.out.println("A new database has been created: " + URL);
 			}
 
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.err.println("Conexão error : " + e.getMessage());
 		}
 	}
 
 	public static void main(String[] args) {
-		// createNewDatabase("teste.db");
-		//createNewTableUsuario();
-		//		executeSQl ( "CREATE TABLE IF NOT EXISTS ItemPedido (\n"
-		//				+ " itempedidoID integer NOT NULL PRIMARY KEY ,"
-		//				+ " Quantidade integer ,"
-		//				+ " ItemID integer,"
-		//				+ " foreing key(itemid) references item (itemid) "
-		//				+")");
-
-
-	}
-
-	public static void createNewTableUsuario() {
-
-
-		// SQL statement for creating a new table
-		String sql = "CREATE TABLE IF NOT EXISTS USUARIO (\n"
-				+ "	USUARIOid integer PRIMARY KEY NOT NULL,\n"
-				+ "	USUARIOData TEXT,\n"
-				+ " USUARIOvalidade date NOT NULL,\n"
-				+ " USUARIOLogin TEXT (100),\n"
-				+ " USUARIONumeroCartao INTEGER,\n"
-				+ "	USUARIOSenha INT\n"
-				+ ");";
-		try (Connection conn = DriverManager.getConnection(URL);
-				Statement stmt = conn.createStatement()) {
-			// create a new table
-			stmt.execute(sql);
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+		if (!DB_FILE.exists()) {
+			Conn conn = new Conn();
+			conn.connect();
 		}
+		
+//		createNewDatabase();
+//		executeSql("CREATE TABLE IF NOT EXISTS USUARIO (" 
+//				+ "	USERID integer PRIMARY KEY NOT NULL," 
+//				+ " USERLOGIN TEXT (100)," 
+//				+ "	USERDATA TEXT," 
+//				+ " USERVALIDADE date," 
+//				+ " USERCARTAO INTEGER," 
+//				+ "	USERSENHA text" 
+//				+ ")");
+//
+//		executeSql ("CREATE TABLE IF NOT EXISTS ITEM ("
+//				+ " ITEMID integer NOT NULL PRIMARY KEY ,"
+//				+ " ITEMVALOR double,"
+//				+ " ITEMDESC text,"
+//				+ " ITEMNOME text"
+//				+")");
+
+//		executeSql ("CREATE TABLE IF NOT EXISTS ITEMPEDIDO ("
+//				+ " ITEMPEDIDOID integer NOT NULL PRIMARY KEY ,"
+//				+ " ITEMPQDIDOQTD text,"
+//				+ " ITEMID integer,"
+//				+ " FOREIGN KEY(ITEMID) REFERENCES ITEM(ITEMID)"
+//				+")");
+//		executeSql ("CREATE TABLE IF NOT EXISTS PEDIDOCOMPRA ("
+//				+ " PEDIDOCOMPRAID integer NOT NULL PRIMARY KEY ,"
+//				+ " PEDIDOCOMPRADATA DATE,"
+//				+ " USERID integer,"
+//				+ " ITEMPEDIDOID integer,"
+//				+ " FOREIGN KEY(USERID) REFERENCES USER(ISERID),"
+//				+ " FOREIGN KEY(ITEMPEDIDOID) REFERENCES ITEMPEDIDO(ITEMPEDIDOID)"  
+//				+")");
+		
 	}
 
-
-
-	public static void createNewTablePedidoCompra() {
-		//SQLite connection string
-
-
-		// SQL statement for creating a new table 
-		String sql = "CREATE TABLE IF NOT EXISTS COMPRA (\n"
-				+ "Data (DATE),\n"
-				+ "FOREING KEY USUARIO ,\n"
-				+")";
-
-
-
-	}
-	public static void createNewTableItemPedido() {
-
-
-		// SQL statement for creating a new table 
-		String sql = "CREATE TABLE IF NOT EXISTS ItemPedido (\n"
-				+ " Quantidade INT,\n"
-				+")";
-
-	}
 
 }

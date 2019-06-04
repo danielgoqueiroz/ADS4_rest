@@ -10,17 +10,11 @@ public class UsuarioService {
 	UsuarioDAO dao = new UsuarioDAO();
 	
 	public Usuario getUser(String userName) {
-		Usuario usuario = new Usuario(userName);
-//		Usuario usuario = dao.getUsuario();
-		usuario.setCodigoSeguranca(1);
-		usuario.setNumeroCartao("654987");
-		usuario.setSenha("123456");
-		usuario.setDataValidade(new Date().toInstant().toString());
-		return usuario;
+		return dao.getUser(userName);
 	}
 
 	public Usuario saveUser(Usuario usuario) {
-		return dao.savar(usuario);
+		return dao.salvar(usuario);
 	}
 
 }

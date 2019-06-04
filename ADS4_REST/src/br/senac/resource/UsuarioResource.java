@@ -23,7 +23,7 @@ public class UsuarioResource {
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@QueryParam("usuario") String userName){
-		if (userName.isEmpty()) {
+		if (userName == null || userName.isEmpty() ) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		} else {
 			Usuario usuario = service.getUser(userName);
