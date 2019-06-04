@@ -1,6 +1,6 @@
 package br.senac.service;
 
-import ProdutoDAO.PedidoDAO;
+import br.senac.dao.PedidoDAO;
 import br.senac.model.Pedido;
 import br.senac.model.Usuario;
 

@@ -2,7 +2,7 @@ package br.senac.service;
 
 import java.util.Date;
 
-import ProdutoDAO.UsuarioDAO;
+import br.senac.dao.UsuarioDAO;
 import br.senac.model.Usuario;
 
 public class UsuarioService {

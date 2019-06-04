@@ -1,6 +1,6 @@
 package br.senac.service;
 
-import ProdutoDAO.ItemPedidoDAO;
+import br.senac.dao.ItemPedidoDAO;
 import br.senac.model.ItemPedido;
 
 public class ItemPedidoService {

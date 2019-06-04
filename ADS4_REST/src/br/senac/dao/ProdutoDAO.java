@@ -1,4 +1,4 @@
-package ProdutoDAO;
+package br.senac.dao;
 
 public class ProdutoDAO {
 

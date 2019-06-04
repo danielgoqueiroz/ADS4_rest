@@ -1,4 +1,4 @@
-package ProdutoDAO;
+package br.senac.dao;
 
 import java.io.File;
 import java.sql.Connection;

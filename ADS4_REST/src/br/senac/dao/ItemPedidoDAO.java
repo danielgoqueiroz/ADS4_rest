@@ -1,4 +1,4 @@
-package ProdutoDAO;
+package br.senac.dao;
 
 import br.senac.model.ItemPedido;
 
