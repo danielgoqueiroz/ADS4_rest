@@ -10,11 +10,11 @@ public class UsuarioService {
 	UsuarioDAO dao = new UsuarioDAO();
 	
 	public Usuario getUser(String userName) {
-		return dao.getUser(userName);
+		return dao.getByNickname(userName);
 	}
 
 	public Usuario saveUser(Usuario usuario) {
-		return dao.salvar(usuario);
+		return dao.save(usuario);
 	}
 
 }

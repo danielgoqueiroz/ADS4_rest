@@ -11,7 +11,8 @@ public class Conn {
 	
 	
 	public static final File DB_FILE =new File("resource/db/pedido.db");
-	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
+//	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
+	public static final String URL = "jdbc:sqlite:" + "D:\\Desenvimento\\git\\ADS4_rest\\ADS4_REST\\WebContent\\WEB-INF\\db\\pedido.db";
 	public static Connection connection;
 
 	public Connection connect() {
@@ -61,23 +62,23 @@ public class Conn {
 			conn.connect();
 		}
 		
-//		createNewDatabase();
+		createNewDatabase();
 //		executeSql("CREATE TABLE IF NOT EXISTS USUARIO (" 
 //				+ "	USERID integer PRIMARY KEY NOT NULL," 
-//				+ " USERLOGIN TEXT (100)," 
+//				+ " USERLOGIN TEXT,"
+//				+ " USERCODSEGU integer," 
 //				+ "	USERDATA TEXT," 
 //				+ " USERVALIDADE date," 
 //				+ " USERCARTAO INTEGER," 
 //				+ "	USERSENHA text" 
 //				+ ")");
-//
 //		executeSql ("CREATE TABLE IF NOT EXISTS ITEM ("
 //				+ " ITEMID integer NOT NULL PRIMARY KEY ,"
 //				+ " ITEMVALOR double,"
 //				+ " ITEMDESC text,"
 //				+ " ITEMNOME text"
 //				+")");
-
+//
 //		executeSql ("CREATE TABLE IF NOT EXISTS ITEMPEDIDO ("
 //				+ " ITEMPEDIDOID integer NOT NULL PRIMARY KEY ,"
 //				+ " ITEMPQDIDOQTD text,"
