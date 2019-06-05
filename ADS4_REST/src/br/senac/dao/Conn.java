@@ -10,16 +10,17 @@ import java.sql.Statement;
 public class Conn {
 	
 	
-	public static final File DB_FILE =new File("resource/db/pedido.db");
+	public static final File DB_FILE =new File("D:\\Desenvimento\\javaWorkspaces\\default\\ADS4_rest\\ADS4_REST\\WebContent\\WEB-INF\\db\\pedido.db");
 //	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
-	public static final String URL = "jdbc:sqlite:" + "D:\\Desenvimento\\git\\ADS4_rest\\ADS4_REST\\WebContent\\WEB-INF\\db\\pedido.db";
+	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
 	public static Connection connection;
 
 	public Connection connect() {
 		try {
+			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection(URL);
 			System.out.println("Conexão realizada com sucesso.");
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			System.err.println("Erro na conexão: " + e.getMessage()+ "\n" + URL);
 		}
 		return connection;
@@ -27,6 +28,7 @@ public class Conn {
 
 
 	public static void executeSql(String sql) {
+		
 		try (Connection conn = DriverManager.getConnection(URL);
 				Statement stmt = conn.createStatement()) {
 			stmt.execute(sql);
