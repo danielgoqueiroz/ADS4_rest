@@ -9,9 +9,13 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.google.gson.Gson;
+
+import br.senac.dao.ItemDAO;
 import br.senac.model.Filtro;
 import br.senac.model.Item;
 import br.senac.service.ItemService;
@@ -19,27 +23,25 @@ import br.senac.service.ItemService;
 @Path("item")
 public class ItemResource {
 
+	ItemDAO dao = new ItemDAO();
+	Gson gson = new Gson();
 	private static ItemService service = new ItemService();
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response get(@QueryParam("item") String id, @QueryParam("descricao") String descricao){
 		//O sistema deve listar todos os itens que estejam a venda em sua tela inicial, ordenados
-				//pelos mais vendidos
-		Filtro filtro = new Filtro();
-		if (!descricao.isEmpty()) {
-			filtro.setDescricao(descricao);
-		}
+		//pelos mais vendidos
 		
-		if (id.isEmpty()) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		} else {
-			List<Item> items  = service.getItems();
-			return Response.ok().entity(items).build();
+		if (descricao == null) {
+			descricao = "";
 		}
+
+		List<Item> items  = service.getItems(descricao);
+		return Response.ok().entity(gson.toJson(items)).build();
 	}
 
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

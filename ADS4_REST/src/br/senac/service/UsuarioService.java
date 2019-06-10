@@ -17,4 +17,9 @@ public class UsuarioService {
 		return dao.save(usuario);
 	}
 
+	public Usuario login(Usuario usuario) {
+		dao.logaUsuario(usuario);// TODO Auto-generated method stub
+		return null;
+	}
+
 }

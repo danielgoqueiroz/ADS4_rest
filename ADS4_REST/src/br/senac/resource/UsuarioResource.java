@@ -34,6 +34,18 @@ public class UsuarioResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    public Response login(Usuario usuario){
+		if (usuario == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		} else {
+			Usuario usuarioLogado = service.login(usuario);
+			return Response.ok().entity(usuarioLogado).build();
+		}
+    }
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response save(Usuario usuario){
 		if (usuario == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();

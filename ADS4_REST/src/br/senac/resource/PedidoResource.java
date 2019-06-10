@@ -47,12 +47,12 @@ public class PedidoResource {
 	
 	@DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    public Response remove(@QueryParam("id") String id){
-		if (id.isEmpty()) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		} else {
+    public Response cancelar(@QueryParam("id") String id, Usuario usuario){
+		//valida usuario com pedido 
+		
+		service.cancelarPedido(id);		
+		
 			return Response.accepted().build();
-		}
     }
 	
 }

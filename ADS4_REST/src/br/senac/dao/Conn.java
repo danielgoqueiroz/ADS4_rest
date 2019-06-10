@@ -19,7 +19,6 @@ public class Conn {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection(URL);
-			System.out.println("Conexão realizada com sucesso.");
 		} catch (SQLException | ClassNotFoundException e) {
 			System.err.println("Erro na conexão: " + e.getMessage()+ "\n" + URL);
 		}

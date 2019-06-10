@@ -17,4 +17,9 @@ public class PedidoService {
 		return dao.save(pedido);
 	}
 
+	public void cancelarPedido(String id) {
+		dao.cancel(id);
+		
+	}
+
 }
