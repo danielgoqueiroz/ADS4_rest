@@ -14,7 +14,7 @@ public class UsuarioDAO {
 	public Usuario save(Usuario usuario){
 		System.out.println("Salvando usuário "+usuario+ " no repositório local.");
 
-		String sql = "INSERT INTO USER (USERLOGIN, USERDATA, USERCARTAO, USERCODSEGU, USERSENHA) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO USUARIO (USERLOGIN, USERDATA, USERCARTAO, USERCODSEGU, USERSENHA) VALUES(?,?,?,?,?)";
 		int success = -1;
 		try (Connection conn = new Conn().connect();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -34,13 +34,12 @@ public class UsuarioDAO {
 	
 	public Usuario update(Usuario usuario){
 
-		String sql = "UPDATE USER SET USERLOGIN = "
-				+ ",USERDATA = " + usuario.getDataValidade()
-				+ ",USERCARTAO = " + usuario.getNumeroCartao()
+		String sql = "UPDATE USUARIO SET USERLOGIN = '" + usuario.getLogin() + "'"
+				+ ",USERDATA = '" + usuario.getDataValidade() + "'"
+				+ ",USERCARTAO = '" + usuario.getNumeroCartao() + "'"
 				+ ",USERCODSEGU = " + usuario.getCodigoSeguranca()
-				+ ",USERSENHA = " + usuario.getSenha() + ";";
+				+ ",USERSENHA = '" + usuario.getSenha() + "';";
 		
-		int success = -1;
 		try (Connection conn = new Conn().connect();
 				Statement stmt  = conn.createStatement();
 				ResultSet rs    = stmt.executeQuery(sql)) {
@@ -87,7 +86,7 @@ public class UsuarioDAO {
 	}
 
 	public Usuario logaUsuario(Usuario usuario) {
-		String sql = "SELECT * FROM USUARIO WHERE USERLOGIN = '"+usuario.getLogin()+"' AND SENHA ='" + usuario.getSenha() + "'";
+		String sql = "SELECT * FROM USUARIO WHERE USERLOGIN = '"+usuario.getLogin()+"' AND USERSENHA ='" + usuario.getSenha() + "'";
 		Usuario user= null;
 
 		try (Connection conn = new Conn().connect();

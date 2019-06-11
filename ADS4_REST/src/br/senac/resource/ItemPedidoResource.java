@@ -1,5 +1,9 @@
 package br.senac.resource;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -9,14 +13,17 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import br.senac.model.Erro;
+import br.senac.model.Item;
 import br.senac.model.ItemPedido;
+import br.senac.model.Pedido;
 import br.senac.model.Usuario;
 import br.senac.service.ItemPedidoService;
 
 public class ItemPedidoResource {
 
 	ItemPedidoService service = new ItemPedidoService();
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response get(@QueryParam("itemPedido") String id){
@@ -29,19 +36,8 @@ public class ItemPedidoResource {
 	}
 
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response addItem(Usuario usuario, ItemPedido itemPedido){
-		if (itemPedido == null) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		} else {
-			ItemPedido itemPedidoSalvo= service.save(itemPedido);
-			return Response.ok().entity(itemPedidoSalvo).build();
-		}
-	}
-
 	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -68,7 +64,7 @@ public class ItemPedidoResource {
 		}
 	}
 
-	
+
 }
 
 

@@ -1,5 +1,9 @@
 package br.senac.resource;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+
 import javax.annotation.Generated;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -12,9 +16,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
+import br.senac.model.Erro;
+import br.senac.model.Item;
 import br.senac.model.Pedido;
 import br.senac.model.Usuario;
 import br.senac.service.PedidoService;
+import br.senac.service.UsuarioService;
 
 
 @Path("/pedido")
@@ -35,15 +42,31 @@ public class PedidoResource {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response save(Pedido pedido){
-		if (pedido == null) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		} else {
-			Pedido pedidoSalvo = service.savePedio(pedido);
-			return Response.ok().entity(pedidoSalvo).build();
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addItem(Usuario usuario, List<Item> items, Pedido pedido){
+		
+		try {
+			UsuarioService.verificaUsuario(usuario);
+		} catch (IllegalAccessException | NoSuchAlgorithmException | IOException e) {
+			return Response.status(Response.Status.BAD_REQUEST).entity(new Error(Erro.SEM_PERMISSAO)).build();
 		}
-    }
+		
+		pedido.addItem(items);
+		return Response.ok().entity(pedido).build();
+	}
+
+//	
+//	@POST
+//	@Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response save(Pedido pedido){
+//		if (pedido == null) {
+//			return Response.status(Response.Status.BAD_REQUEST).build();
+//		} else {
+//			Pedido pedidoSalvo = service.savePedio(pedido);
+//			return Response.ok().entity(pedidoSalvo).build();
+//		}
+//    }
 	
 	@DELETE
     @Produces(MediaType.APPLICATION_JSON)
