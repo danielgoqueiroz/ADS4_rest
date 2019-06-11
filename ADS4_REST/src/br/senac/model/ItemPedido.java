@@ -29,6 +29,11 @@ public class ItemPedido {
 		this.id = id;
 	}
 	
+	@Override
+	public String toString() {
+		return this.getId() + " | " + this.getItem() + " | " +this.getQuantidade();
+	}
+	
 	
 	
 }

@@ -32,12 +32,34 @@ public class ItemDAO {
 		}
 		return items;
 	}
+	
+	public Item getItem(Integer id) {
+		String sql = "SELECT * FROM ITEM WHERE ITEMID = "+id+"";
+		Item item= null;
 
+		try (Connection conn = new Conn().connect();
+				Statement stmt  = conn.createStatement();
+				ResultSet rs    = stmt.executeQuery(sql)){
+			while (rs.next()) {
+				item= new Item();
+				item.setId(rs.getInt("ITEMID"));
+				item.setNome(rs.getString("ITEMNOME"));
+				item.setValor(rs.getDouble("ITEMVALOR"));
+				item.setDetalhe(rs.getString("ITEMDESC"));
+				System.out.println(item);
+				return item;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+		return item;
+
+	}
 
 
 	public static void main(String[] args) {
 		ItemDAO dao = new ItemDAO();
-		System.out.println(dao.getItems("fone"));
+		System.out.println(dao.getItem(1));
 	}
 
 

@@ -33,7 +33,9 @@ public class PedidoResource {
 	
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response get(@QueryParam("pedido") String id){
+    public Response finalizaPedido(@QueryParam("pedido") String id){
+		//envia codigo para usuario
+		
 		if (id.isEmpty()) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		} else {

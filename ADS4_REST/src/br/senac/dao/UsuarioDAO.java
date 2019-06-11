@@ -12,7 +12,7 @@ import br.senac.model.Usuario;
 public class UsuarioDAO {
 
 	public Usuario save(Usuario usuario){
-		System.out.println("Salvando usuário "+usuario+ " no repositório local.");
+		System.out.println("Salvando usuário "+ usuario + " no repositório local.");
 
 		String sql = "INSERT INTO USUARIO (USERLOGIN, USERDATA, USERCARTAO, USERCODSEGU, USERSENHA) VALUES(?,?,?,?,?)";
 		int success = -1;

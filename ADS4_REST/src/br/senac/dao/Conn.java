@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class Conn {
 	
 	
-	public static final File DB_FILE =new File("D:\\Desenvimento\\javaWorkspaces\\default\\ADS4_rest\\ADS4_REST\\WebContent\\WEB-INF\\db\\pedido.db");
+	public static final File DB_FILE =new File("D:\\Aluno\\workspace\\ADS4_rest\\ADS4_REST\\WebContent\\WEB-INF\\db\\pedido.db");
 //	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
 	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
 	public static Connection connection;

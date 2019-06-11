@@ -33,5 +33,9 @@ public class Item {
 		this.nome = nome;
 	}
 	
+	@Override
+	public String toString() {
+		return this.getId() +" | "+this.getNome() + " | " + this.getValor();
+	}
 	
 }
