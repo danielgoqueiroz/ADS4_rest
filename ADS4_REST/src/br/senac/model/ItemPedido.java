@@ -2,6 +2,8 @@ package br.senac.model;
 
 public class ItemPedido {
 
+	
+	private int id;
 	private Item item;
 	private int quantidade;
 	
@@ -19,6 +21,12 @@ public class ItemPedido {
 	}
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import br.senac.dao.ItemPedidoDAO;
 import br.senac.model.ItemPedido;
+import br.senac.model.Pedido;
 import br.senac.model.Usuario;
 
 public class ItemPedidoService {
@@ -23,9 +24,8 @@ public class ItemPedidoService {
 		return false;
 	}
 
-	public Usuario addItem(Usuario usuario, ItemPedido itemPedido) {
-		dao.addItem(usuario, itemPedido);
-		return null;
+	public ItemPedido addItem(ItemPedido itemPedido) {
+		return dao.addItem(itemPedido);
 	}
 
 	public void verificaUsuario(Usuario usuario) throws IllegalAccessException, NoSuchAlgorithmException, IOException {

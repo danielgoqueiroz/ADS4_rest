@@ -18,8 +18,10 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import br.senac.model.Erro;
 import br.senac.model.Item;
+import br.senac.model.ItemPedido;
 import br.senac.model.Pedido;
 import br.senac.model.Usuario;
+import br.senac.service.ItemPedidoService;
 import br.senac.service.PedidoService;
 import br.senac.service.UsuarioService;
 
@@ -40,20 +42,14 @@ public class PedidoResource {
 		}
     }
 	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response addItem(Usuario usuario, List<Item> items, Pedido pedido){
-		
-		try {
-			UsuarioService.verificaUsuario(usuario);
-		} catch (IllegalAccessException | NoSuchAlgorithmException | IOException e) {
-			return Response.status(Response.Status.BAD_REQUEST).entity(new Error(Erro.SEM_PERMISSAO)).build();
-		}
-		
-		pedido.addItem(items);
-		return Response.ok().entity(pedido).build();
-	}
+//	@POST
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Response addItem(Usuario usuario, ItemPedido itemPedido, Pedido pedido){
+//		
+//		
+//		return Response.ok().entity(pedido).build();
+//	}
 
 //	
 //	@POST

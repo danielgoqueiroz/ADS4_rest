@@ -31,8 +31,10 @@ public class Pedido {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public void addItem(List<Item> items) {
-		items.addAll(items);
+	public void addItem(ItemPedido itemPedido) {
+		for (int i = 0; i < itemPedido.getQuantidade(); i++) {
+			this.items.add(itemPedido.getItem());
+		}
 	}
 	
 	
