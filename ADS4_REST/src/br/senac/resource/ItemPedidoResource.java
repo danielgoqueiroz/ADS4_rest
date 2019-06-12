@@ -43,6 +43,27 @@ public class ItemPedidoResource {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 		return Response.ok().entity(itemPedido).build();
+	public Response add(ItemPedido itemPedido){
+		itemPedido.setItem(itemDAO.getItem(itemPedido.getItem().getId()));
+		itemPedido = service.addItem(itemPedido);
+		if (itemPedido == null ) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok().entity(itemPedido).build();
+	public Response add(ItemPedido itemPedido){
+		itemPedido.setItem(itemDAO.getItem(itemPedido.getItem().getId()));
+		itemPedido = service.addItem(itemPedido);
+		if (itemPedido == null ) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok().entity(itemPedido).build();
+	public Response add(ItemPedido itemPedido){
+		itemPedido.setItem(itemDAO.getItem(itemPedido.getItem().getId()));
+		itemPedido = service.addItem(itemPedido);
+		if (itemPedido == null ) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		return Response.ok().entity(itemPedido).build();
 
 //		} catch (IllegalAccessException | NoSuchAlgorithmException | IOException e) {
 //			return Response.status(Response.Status.BAD_REQUEST).entity(new Error(Erro.SEM_PERMISSAO)).build();
