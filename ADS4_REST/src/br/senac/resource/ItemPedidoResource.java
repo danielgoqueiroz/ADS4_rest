@@ -37,27 +37,6 @@ public class ItemPedidoResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response add(ItemPedido itemPedido){
-//		itemPedido.setItem(itemDAO.getItem(itemPedido.getItem().getId()));
-		itemPedido = service.addItem(itemPedido);
-		if (itemPedido == null ) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		}
-		return Response.ok().entity(itemPedido).build();
-	public Response add(ItemPedido itemPedido){
-		itemPedido.setItem(itemDAO.getItem(itemPedido.getItem().getId()));
-		itemPedido = service.addItem(itemPedido);
-		if (itemPedido == null ) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		}
-		return Response.ok().entity(itemPedido).build();
-	public Response add(ItemPedido itemPedido){
-		itemPedido.setItem(itemDAO.getItem(itemPedido.getItem().getId()));
-		itemPedido = service.addItem(itemPedido);
-		if (itemPedido == null ) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		}
-		return Response.ok().entity(itemPedido).build();
-	public Response add(ItemPedido itemPedido){
 		itemPedido.setItem(itemDAO.getItem(itemPedido.getItem().getId()));
 		itemPedido = service.addItem(itemPedido);
 		if (itemPedido == null ) {
