@@ -8,10 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Conn {
-	
-	
+
+
 	public static final File DB_FILE =new File("D:\\Desenvimento\\javaWorkspaces\\default\\ADS4_rest\\ADS4_REST\\WebContent\\WEB-INF\\db\\pedido.db");
-//	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
+	//	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
 	public static final String URL = "jdbc:sqlite:" + DB_FILE.getAbsolutePath();
 	public static Connection connection;
 
@@ -27,7 +27,7 @@ public class Conn {
 
 
 	public static void executeSql(String sql) {
-		
+
 		try (Connection conn = DriverManager.getConnection(URL);
 				Statement stmt = conn.createStatement()) {
 			stmt.execute(sql);
@@ -62,39 +62,42 @@ public class Conn {
 			Conn conn = new Conn();
 			conn.connect();
 		}
-		
-		createNewDatabase();
-//		executeSql("CREATE TABLE IF NOT EXISTS USUARIO (" 
-//				+ "	USERID integer PRIMARY KEY NOT NULL," 
-//				+ " USERLOGIN TEXT,"
-//				+ " USERCODSEGU integer," 
-//				+ "	USERDATA TEXT," 
-//				+ " USERVALIDADE date," 
-//				+ " USERCARTAO INTEGER," 
-//				+ "	USERSENHA text" 
-//				+ ")");
-//		executeSql ("CREATE TABLE IF NOT EXISTS ITEM ("
-//				+ " ITEMID integer NOT NULL PRIMARY KEY ,"
-//				+ " ITEMVALOR double,"
-//				+ " ITEMDESC text,"
-//				+ " ITEMNOME text"
-//				+")");
-//
+
+//		createNewDatabase();
+		//		executeSql("CREATE TABLE IF NOT EXISTS USUARIO (" 
+		//				+ "	USERID integer PRIMARY KEY NOT NULL," 
+		//				+ " USERLOGIN TEXT,"
+		//				+ " USERCODSEGU integer," 
+		//				+ "	USERDATA TEXT," 
+		//				+ " USERVALIDADE date," 
+		//				+ " USERCARTAO INTEGER," 
+		//				+ "	USERSENHA text" 
+		//				+ ")");
+		//		executeSql ("CREATE TABLE IF NOT EXISTS ITEM ("
+		//				+ " ITEMID integer NOT NULL PRIMARY KEY ,"
+		//				+ " ITEMVALOR double,"
+		//				+ " ITEMDESC text,"
+		//				+ " ITEMNOME text"
+		//				+")");
+//		executeSql ("DROP TABLE ITEMPEDIDO");
 //		executeSql ("CREATE TABLE IF NOT EXISTS ITEMPEDIDO ("
 //				+ " ITEMPEDIDOID integer NOT NULL PRIMARY KEY ,"
 //				+ " ITEMPQDIDOQTD text,"
-//				+ " ITEMID integer,"
-//				+ " FOREIGN KEY(ITEMID) REFERENCES ITEM(ITEMID)"
+//				+ " ITEMID INTEGER,"
+//				+ " USERID INTEGER,"
+//				+ " ITEMPEDIDODATE TEXT,"
+//				+ " FOREIGN KEY(ITEMID) REFERENCES ITEM(ITEMID),"
+//				+ " FOREIGN KEY(USERID) REFERENCES USUARIO(ISERID) "
 //				+")");
-//		executeSql ("CREATE TABLE IF NOT EXISTS PEDIDOCOMPRA ("
-//				+ " PEDIDOCOMPRAID integer NOT NULL PRIMARY KEY ,"
-//				+ " PEDIDOCOMPRADATA DATE,"
-//				+ " USERID integer,"
-//				+ " ITEMPEDIDOID integer,"
-//				+ " FOREIGN KEY(USERID) REFERENCES USER(ISERID),"
-//				+ " FOREIGN KEY(ITEMPEDIDOID) REFERENCES ITEMPEDIDO(ITEMPEDIDOID)"  
-//				+")");
-		
+		//		executeSql ("CREATE TABLE IF NOT EXISTS PEDIDOCOMPRA ("
+		//				+ " PEDIDOCOMPRAID integer NOT NULL PRIMARY KEY ,"
+		//				+ " PEDIDOCOMPRADATA DATE,"
+		//				+ " USERID integer,"
+		//				+ " ITEMPEDIDOID integer,"
+		//				+ " FOREIGN KEY(USERID) REFERENCES USER(ISERID),"
+		//				+ " FOREIGN KEY(ITEMPEDIDOID) REFERENCES ITEMPEDIDO(ITEMPEDIDOID)"  
+		//				+")");
+
 	}
 
 

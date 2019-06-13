@@ -4,6 +4,7 @@ public class ItemPedido {
 
 	
 	private int id;
+	public Usuario usuario;
 	private Item item;
 	private int quantidade;
 	
@@ -28,7 +29,12 @@ public class ItemPedido {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	
 	
 }

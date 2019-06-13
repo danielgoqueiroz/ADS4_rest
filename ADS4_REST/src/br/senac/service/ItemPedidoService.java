@@ -12,9 +12,9 @@ public class ItemPedidoService {
 
 	ItemPedidoDAO dao = new ItemPedidoDAO();
 	
-	public ItemPedido getItemPedido(String id) {
-		return dao.get(id);
-	}
+//	public ItemPedido getItemPedido(String id) {
+//		return dao.get(id);
+//	}
 
 	public ItemPedido save(ItemPedido itemPedido) {
 		return dao.save(itemPedido);
@@ -24,14 +24,16 @@ public class ItemPedidoService {
 		return false;
 	}
 
-	public ItemPedido addItem(ItemPedido itemPedido) {
-		return dao.addItem(itemPedido);
+	public Pedido addItem(ItemPedido itemPedido) {
+		Pedido pedido = new Pedido(itemPedido.getUsuario());
+		pedido.addItemPedido(dao.addItem(itemPedido));
+		return pedido;
 	}
 
-	public void verificaUsuario(Usuario usuario) throws IllegalAccessException, NoSuchAlgorithmException, IOException {
-		UsuarioService usuarioService = new UsuarioService();
-		usuarioService.login(usuario);
-		
-	}
+//	public void verificaUsuario(Usuario usuario) throws IllegalAccessException, NoSuchAlgorithmException, IOException {
+//		UsuarioService usuarioService = new UsuarioService();
+//		usuarioService.login(usuario);
+//		
+//	}
 
 }

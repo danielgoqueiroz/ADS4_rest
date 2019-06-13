@@ -6,12 +6,18 @@ import java.security.NoSuchAlgorithmException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HEAD;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.eclipse.jetty.http.HttpParser.ResponseHandler;
 
 import br.senac.model.Erro;
 import br.senac.model.Usuario;
@@ -35,23 +41,6 @@ public class UsuarioResource {
 		}
 	}
 
-	@POST
-	@Path("/login")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response login(Usuario usuario){
-
-		Usuario usuarioLogado = null;
-		try {
-			usuarioLogado = service.login(usuario);
-		} catch (IllegalAccessException | NoSuchAlgorithmException | IOException e) {
-			return Response.status(Response.Status.BAD_REQUEST).entity(new Erro(Erro.SEM_PERMISSAO)).build();
-		}
-		if (usuarioLogado == null) {
-			return Response.status(Response.Status.BAD_REQUEST).entity(new Erro(Erro.SEM_PERMISSAO)).build();
-		}
-		return Response.ok().entity(usuarioLogado).build();
-	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

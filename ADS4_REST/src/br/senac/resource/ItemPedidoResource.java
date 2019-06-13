@@ -30,23 +30,45 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 @Path("carrinho")
 public class ItemPedidoResource {
 	
-	ItemPedidoService service = new ItemPedidoService();
-	ItemDAO itemDAO = new ItemDAO();
+	static ItemPedidoService service = new ItemPedidoService();
+	static UsuarioService uService = new UsuarioService();
+	static ItemDAO itemDAO = new ItemDAO();
+	
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response add(ItemPedido itemPedido){
-		itemPedido.setItem(itemDAO.getItem(itemPedido.getItem().getId()));
-		itemPedido = service.addItem(itemPedido);
-		if (itemPedido == null ) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
+	public Response getCarrinho(@QueryParam("key") String key){
+		Usuario usuario = uService.getUser(key);
+		if (usuario == null) {
+			Response.status(Response.Status.UNAUTHORIZED).build();
 		}
+		if (itemPedido == null) {
+			Response.status(Response.Status.BAD_REQUEST).entity(new Erro("Precisa informar item.")).build();
+		} else {
+			itemPedido.setUsuario(usuario);
+			service.save(itemPedido);
+		}
+		
 		return Response.ok().entity(itemPedido).build();
-
-//		} catch (IllegalAccessException | NoSuchAlgorithmException | IOException e) {
-//			return Response.status(Response.Status.BAD_REQUEST).entity(new Error(Erro.SEM_PERMISSAO)).build();
-//		}
+	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addItemCarrinho(@QueryParam("key") String key, ItemPedido itemPedido){
+		Usuario usuario = uService.getUser(key);
+		if (usuario == null) {
+			Response.status(Response.Status.UNAUTHORIZED).build();
+		}
+		if (itemPedido == null) {
+			Response.status(Response.Status.BAD_REQUEST).entity(new Erro("Precisa informar item.")).build();
+		} else {
+			itemPedido.setUsuario(usuario);
+			service.save(itemPedido);
+		}
+		
+		return Response.ok().entity(itemPedido).build();
 	}
 }
 

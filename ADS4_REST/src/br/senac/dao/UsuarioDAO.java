@@ -110,5 +110,28 @@ public class UsuarioDAO {
 		
 	}
 
+	public Usuario validateUser(String key) {
+		String sql = "SELECT * FROM USUARIO WHERE KEY = '"+ key + "'";
+		Usuario user= null;
+
+		try (Connection conn = new Conn().connect();
+				Statement stmt  = conn.createStatement();
+				ResultSet rs    = stmt.executeQuery(sql)){
+			while (rs.next()) {
+				user= new Usuario(rs.getString("USERLOGIN"));
+				user.setId(rs.getInt("USERID"));
+				user.setCodigoSeguranca(rs.getInt("USERCODSEGU"));
+				user.setDataValidade(rs.getString("USERDATA"));
+				user.setNumeroCartao(rs.getString("USERCARTAO"));
+				System.out.println("Usuário carregado do repositório local.");
+				return user;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+		return user;
+
+	}
+
 	
 }

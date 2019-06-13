@@ -20,27 +20,18 @@ public class UsuarioService {
 	
 	UsuarioDAO dao = new UsuarioDAO();
 	
-	public Usuario getUser(String userName) {
-		return dao.getByNickname(userName);
-	}
-
-	public Usuario login(Usuario usuario) throws IllegalAccessException, IOException, NoSuchAlgorithmException {
-		Usuario usuarioLogado =  dao.logaUsuario(usuario);
-		if (usuario == null) {
-			throw new IllegalAccessException();
-		}
-		return usuarioLogado;
-		
+	public Usuario getUser(String key) {
+		return dao.validateUser(key);
 	}
 
 	public Usuario updateUser(Usuario usuario) {
 		return dao.update(usuario);
 	}
 
-	public static Usuario verificaUsuario(Usuario usuario) throws IllegalAccessException, NoSuchAlgorithmException, IOException {
-		UsuarioService usuarioService = new UsuarioService();
-		return usuarioService.login(usuario);
-		
-	}
+//	public static Usuario verificaUsuario(Usuario usuario) throws IllegalAccessException, NoSuchAlgorithmException, IOException {
+//		UsuarioService usuarioService = new UsuarioService();
+//		return usuarioService.login(usuario);
+//		
+//	}
 
 }

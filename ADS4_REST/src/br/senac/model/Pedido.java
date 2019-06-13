@@ -9,9 +9,14 @@ public class Pedido {
 	private int id;
 	private Date data;
 	private Usuario usuario;
-	List<Item> items = new ArrayList<Item>();
+	List<ItemPedido> itemsPedidos = new ArrayList<ItemPedido>();
 	
+	
+	public Pedido() {
+		super();
+	}
 	public Pedido(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	public int getId() {
 		return id;
@@ -31,13 +36,21 @@ public class Pedido {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public void addItem(ItemPedido itemPedido) {
-		for (int i = 0; i < itemPedido.getQuantidade(); i++) {
-			this.items.add(itemPedido.getItem());
-		}
+	public void addItemPedido(ItemPedido itemPedido) {
+		itemsPedidos.add(itemPedido);
 	}
 	
 	
+	public List<ItemPedido> getItemsPedidos() {
+		return itemsPedidos;
+	}
+	public void setItemsPedidos(List<ItemPedido> itemsPedidos) {
+		this.itemsPedidos = itemsPedidos;
+	}
+	@Override
+	public String toString() {
+		return this.getId() + " | "+ this.getUsuario() + " | "+ this.getData();
+	}
 	
 	
 	
