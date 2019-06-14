@@ -20,6 +20,10 @@ public class UsuarioService {
 	
 	UsuarioDAO dao = new UsuarioDAO();
 	
+	public String getKey(Usuario usuario) {
+		return dao.logaUsuario(usuario);
+	}
+	
 	public Usuario getUser(String key) {
 		return dao.validateUser(key);
 	}

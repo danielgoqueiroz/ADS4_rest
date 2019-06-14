@@ -12,7 +12,6 @@ import br.senac.model.Usuario;
 public class UsuarioDAO {
 
 	public Usuario save(Usuario usuario){
-		System.out.println("Salvando usuário "+usuario+ " no repositório local.");
 
 		String sql = "INSERT INTO USUARIO (USERLOGIN, USERDATA, USERCARTAO, USERCODSEGU, USERSENHA) VALUES(?,?,?,?,?)";
 		int success = -1;
@@ -75,7 +74,6 @@ public class UsuarioDAO {
 				user.setDataValidade(rs.getString("USERDATA"));
 				user.setNumeroCartao(rs.getString("USERCARTAO"));
 				user.setSenha(rs.getString("USERSENHA"));
-				System.out.println("Usuário carregado do repositório local.");
 				return user;
 			}
 		} catch (SQLException e) {
@@ -85,27 +83,20 @@ public class UsuarioDAO {
 
 	}
 
-	public Usuario logaUsuario(Usuario usuario) {
+	public String logaUsuario(Usuario usuario) {
 		String sql = "SELECT * FROM USUARIO WHERE USERLOGIN = '"+usuario.getLogin()+"' AND USERSENHA ='" + usuario.getSenha() + "'";
-		Usuario user= null;
 
 		try (Connection conn = new Conn().connect();
 				Statement stmt  = conn.createStatement();
 				ResultSet rs    = stmt.executeQuery(sql)){
 			while (rs.next()) {
-				user= new Usuario(rs.getString("USERLOGIN"));
-				user.setId(rs.getInt("USERID"));
-				user.setCodigoSeguranca(rs.getInt("USERCODSEGU"));
-				user.setDataValidade(rs.getString("USERDATA"));
-				user.setNumeroCartao(rs.getString("USERCARTAO"));
-				user.setSenha(rs.getString("USERSENHA"));
-				System.out.println("Usuário carregado do repositório local.");
-				return user;
+				String key = rs.getString("KEY");
+				return key;
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro: " + e.getMessage());
 		}
-		return user;
+		return null;
 
 		
 	}
@@ -123,7 +114,6 @@ public class UsuarioDAO {
 				user.setCodigoSeguranca(rs.getInt("USERCODSEGU"));
 				user.setDataValidade(rs.getString("USERDATA"));
 				user.setNumeroCartao(rs.getString("USERCARTAO"));
-				System.out.println("Usuário carregado do repositório local.");
 				return user;
 			}
 		} catch (SQLException e) {
@@ -131,6 +121,34 @@ public class UsuarioDAO {
 		}
 		return user;
 
+	}
+
+	public Usuario getById(int id) {
+
+		String sql = "SELECT * FROM USUARIO WHERE USERID = "+id;
+		Usuario user= null;
+
+		try (Connection conn = new Conn().connect();
+				Statement stmt  = conn.createStatement();
+				ResultSet rs    = stmt.executeQuery(sql)){
+			while (rs.next()) {
+				user= new Usuario(rs.getString("USERLOGIN"));
+				user.setId(rs.getInt("USERID"));
+				user.setCodigoSeguranca(rs.getInt("USERCODSEGU"));
+				user.setDataValidade(rs.getString("USERDATA"));
+				user.setNumeroCartao(rs.getString("USERCARTAO"));
+				user.setSenha(rs.getString("USERSENHA"));
+				return user;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+		return user;
+	}
+
+	public Usuario getKey(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

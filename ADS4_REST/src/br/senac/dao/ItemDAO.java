@@ -33,10 +33,8 @@ public class ItemDAO {
 		return items;
 	}
 	
-	public List<Item> getItem(int id) {
+	public Item getItem(int id) {
 		String sql = "SELECT * FROM ITEM WHERE ITEMID ="+id; 
-		List<Item> items = new ArrayList<Item>();
-
 		try (Connection conn = new Conn().connect();
 				Statement stmt  = conn.createStatement();
 				ResultSet rs    = stmt.executeQuery(sql)){
@@ -46,12 +44,12 @@ public class ItemDAO {
 				item.setValor(rs.getDouble("ITEMVALOR"));
 				item.setDetalhe(rs.getString("ITEMDESC"));
 				item.setNome(rs.getString("ITEMNOME"));
-				items.add(item);
+				return item;
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro: " + e.getMessage());
 		}
-		return items;
+		return null;
 	}
 
 

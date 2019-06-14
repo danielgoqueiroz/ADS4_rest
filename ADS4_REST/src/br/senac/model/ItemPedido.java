@@ -1,15 +1,17 @@
 package br.senac.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class ItemPedido {
 
 	
-	private int id;
+	private Integer id;
 	public Usuario usuario;
 	private Item item;
-	private int quantidade;
+	private Integer quantidade;
 	
 	public ItemPedido() {
-		super();
 	}
 	public Item getItem() {
 		return item;
@@ -17,16 +19,16 @@ public class ItemPedido {
 	public void setItem(Item item) {
 		this.item = item;
 	}
-	public int getQuantidade() {
+	public Integer getQuantidade() {
 		return quantidade;
 	}
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public Usuario getUsuario() {
@@ -35,6 +37,11 @@ public class ItemPedido {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	@Override
+	public String toString() {
+		return this.getId() + " | " + this.getQuantidade() + " | " +  this.getUsuario() + " | " + this.getItem();
+	}
+	
 	
 	
 }

@@ -95,5 +95,8 @@
 	<classpathentry kind="lib" path="D:/Desenvimento/javaWorkspaces/default/ADS4_rest/ADS4_REST/WebContent/WEB-INF/lib/gson-2.8.2-javadoc.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.8.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.8.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-media-json-jackson-2.28.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-media-moxy-2.28.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

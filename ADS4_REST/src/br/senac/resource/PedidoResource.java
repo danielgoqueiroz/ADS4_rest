@@ -31,9 +31,24 @@ public class PedidoResource {
 
 	PedidoService service = new PedidoService();
 	
+	
+
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response save(@QueryParam("key") String key,Pedido pedido){
+		if (pedido == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		} else {
+			Pedido pedidoSalvo = service.savePedio(pedido);
+			return Response.ok().entity(pedidoSalvo).build();
+		}
+    }
+	
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response get(@QueryParam("pedido") String id){
+    public Response get(@QueryParam("key") String key, @QueryParam("pedido") String id){
 		if (id.isEmpty()) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		} else {
@@ -42,31 +57,9 @@ public class PedidoResource {
 		}
     }
 	
-//	@POST
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Response addItem(Usuario usuario, ItemPedido itemPedido, Pedido pedido){
-//		
-//		
-//		return Response.ok().entity(pedido).build();
-//	}
-
-//	
-//	@POST
-//	@Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response save(Pedido pedido){
-//		if (pedido == null) {
-//			return Response.status(Response.Status.BAD_REQUEST).build();
-//		} else {
-//			Pedido pedidoSalvo = service.savePedio(pedido);
-//			return Response.ok().entity(pedidoSalvo).build();
-//		}
-//    }
-	
 	@DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    public Response cancelar(@QueryParam("id") String id, Usuario usuario){
+    public Response cancelar(@QueryParam("key") String key, @QueryParam("id") String id, Usuario usuario){
 		//valida usuario com pedido 
 		
 		service.cancelarPedido(id);		

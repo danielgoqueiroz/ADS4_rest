@@ -18,4 +18,8 @@ public class ItemService {
 		return null;
 	}
 
+	public Item getItem(int id) {
+		return dao.getItem(id);
+	}
+
 }

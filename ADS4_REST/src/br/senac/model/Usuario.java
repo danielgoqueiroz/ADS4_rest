@@ -1,5 +1,8 @@
 package br.senac.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Usuario {
 	private int id;
 	private int codigoSeguranca;
@@ -9,7 +12,6 @@ public class Usuario {
 	private String senha;
 	
 	public Usuario() {
-		super();
 	}
 	
 	public Usuario(String userName) {

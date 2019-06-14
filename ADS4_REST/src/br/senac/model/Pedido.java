@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Pedido {
 	
 	private int id;
@@ -13,7 +16,6 @@ public class Pedido {
 	
 	
 	public Pedido() {
-		super();
 	}
 	public Pedido(Usuario usuario) {
 		this.usuario = usuario;

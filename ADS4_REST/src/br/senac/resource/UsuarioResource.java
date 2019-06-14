@@ -22,6 +22,7 @@ import org.eclipse.jetty.http.HttpParser.ResponseHandler;
 import br.senac.model.Erro;
 import br.senac.model.Usuario;
 import br.senac.service.UsuarioService;
+import javassist.expr.NewArray;
 
 
 
@@ -32,12 +33,12 @@ public class UsuarioResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response get(@QueryParam("usuario") String userName){
-		if (userName == null || userName.isEmpty() ) {
+	public Response get(Usuario usuario){
+		if (usuario == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		} else {
-			Usuario usuario = service.getUser(userName);
-			return Response.ok().entity(usuario).build();
+			String key = service.getKey(usuario);
+			return Response.ok().entity("{ \"key\": \""+key+"\"}").build();
 		}
 	}
 
@@ -45,7 +46,7 @@ public class UsuarioResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response update(Usuario usuario){
+	public Response update(@QueryParam("key") String key, Usuario usuario){
 		if (usuario == null || usuario.getId() <1) {
 			return Response.status(Response.Status.BAD_REQUEST).entity("Usuário inexistente.").build();
 		} else {
@@ -60,7 +61,7 @@ public class UsuarioResource {
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response remove(@QueryParam("id") String id){
+	public Response remove(@QueryParam("key") String key, @QueryParam("id") String id){
 		if (id.isEmpty()) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		} else {

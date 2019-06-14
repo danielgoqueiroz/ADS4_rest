@@ -2,6 +2,7 @@ package br.senac.service;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import br.senac.dao.ItemPedidoDAO;
 import br.senac.model.ItemPedido;
@@ -28,6 +29,10 @@ public class ItemPedidoService {
 		Pedido pedido = new Pedido(itemPedido.getUsuario());
 		pedido.addItemPedido(dao.addItem(itemPedido));
 		return pedido;
+	}
+
+	public List<ItemPedido> getItensPedido(Usuario usuario) {
+		return dao.getItensPedidos(usuario);
 	}
 
 //	public void verificaUsuario(Usuario usuario) throws IllegalAccessException, NoSuchAlgorithmException, IOException {

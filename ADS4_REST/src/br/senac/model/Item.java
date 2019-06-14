@@ -1,12 +1,18 @@
 package br.senac.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Item {
 	private int id;
 	private Double valor;
 	private String detalhe;
 	private String nome;
+	
 	public Item() {
-		super();
+	}
+	public Item(int id) {
+		this.id = id;
 	}
 	public int getId() {
 		return id;
@@ -32,6 +38,9 @@ public class Item {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+	@Override
+	public String toString() {
+		return this.getId() + " | " + this.getNome() + " | " + this.getValor() + " | " +this.getDetalhe();
+	}
 	
 }
