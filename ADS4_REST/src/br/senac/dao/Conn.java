@@ -63,7 +63,7 @@ public class Conn {
 			conn.connect();
 		}
 
-//		createNewDatabase();
+		//		createNewDatabase();
 		//		executeSql("CREATE TABLE IF NOT EXISTS USUARIO (" 
 		//				+ "	USERID integer PRIMARY KEY NOT NULL," 
 		//				+ " USERLOGIN TEXT,"
@@ -79,24 +79,22 @@ public class Conn {
 		//				+ " ITEMDESC text,"
 		//				+ " ITEMNOME text"
 		//				+")");
-//		executeSql ("DROP TABLE ITEMPEDIDO");
-//		executeSql ("CREATE TABLE IF NOT EXISTS ITEMPEDIDO ("
-//				+ " ITEMPEDIDOID integer NOT NULL PRIMARY KEY ,"
-//				+ " ITEMPQDIDOQTD text,"
-//				+ " ITEMID INTEGER,"
-//				+ " USERID INTEGER,"
-//				+ " ITEMPEDIDODATE TEXT,"
-//				+ " FOREIGN KEY(ITEMID) REFERENCES ITEM(ITEMID),"
-//				+ " FOREIGN KEY(USERID) REFERENCES USUARIO(ISERID) "
-//				+")");
-		//		executeSql ("CREATE TABLE IF NOT EXISTS PEDIDOCOMPRA ("
-		//				+ " PEDIDOCOMPRAID integer NOT NULL PRIMARY KEY ,"
-		//				+ " PEDIDOCOMPRADATA DATE,"
-		//				+ " USERID integer,"
-		//				+ " ITEMPEDIDOID integer,"
-		//				+ " FOREIGN KEY(USERID) REFERENCES USER(ISERID),"
-		//				+ " FOREIGN KEY(ITEMPEDIDOID) REFERENCES ITEMPEDIDO(ITEMPEDIDOID)"  
+		//		executeSql ("DROP TABLE ITEMPEDIDO");
+		//		executeSql ("CREATE TABLE IF NOT EXISTS ITEMPEDIDO ("
+		//				+ " ITEMPEDIDOID integer NOT NULL PRIMARY KEY ,"
+		//				+ " ITEMPQDIDOQTD text,"
+		//				+ " ITEMID INTEGER,"
+		//				+ " USERID INTEGER,"
+		//				+ " PEDIDOCOMPRAID INTEGER,"
+		//				+ " FOREIGN KEY(ITEMID) REFERENCES ITEM(ITEMID),"
+		//				+ " FOREIGN KEY(USERID) REFERENCES USUARIO(USERID), "
+		//				+ " FOREIGN KEY(PEDIDOCOMPRAID) REFERENCES PEDIDOCOMPRA(PEDIDOCOMPRAID) "
 		//				+")");
+		executeSql ("CREATE TABLE IF NOT EXISTS PEDIDOCOMPRA ("
+				+ " PEDIDOCOMPRAID integer NOT NULL PRIMARY KEY,"
+				+ " PEDIDOCOMPRADATA TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
+				+ " PEDIDOCOMPRASTATUS TEXT"
+				+")");
 
 	}
 

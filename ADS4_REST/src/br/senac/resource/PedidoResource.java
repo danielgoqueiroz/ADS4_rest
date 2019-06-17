@@ -16,6 +16,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
+import com.google.gson.Gson;
+
 import br.senac.model.Erro;
 import br.senac.model.Item;
 import br.senac.model.ItemPedido;
@@ -30,41 +32,46 @@ import br.senac.service.UsuarioService;
 public class PedidoResource {
 
 	PedidoService service = new PedidoService();
-	
-	
+	static UsuarioService uService = new UsuarioService();
+	Gson gson = new Gson();
 
-	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response save(@QueryParam("key") String key,Pedido pedido){
-		if (pedido == null) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		} else {
-			Pedido pedidoSalvo = service.savePedio(pedido);
-			return Response.ok().entity(pedidoSalvo).build();
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response pedido(@QueryParam("key") String key, List<ItemPedido> itemsPedidos){
+		Usuario usuario = uService.getUser(key);
+		if (usuario == null) {
+			Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-    }
-	
+		if (itemsPedidos.isEmpty()) {
+			return Response.status(Response.Status.BAD_REQUEST).entity(new Erro("Carrinho vazio.")).build();
+		}
+
+		Pedido pedido = service.realizaPedido(itemsPedidos);
+
+		return Response.status(Response.Status.ACCEPTED).entity("{ \"pedido\" : " + pedido.getId() + " }").build(); 
+	}
+
 	@GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response get(@QueryParam("key") String key, @QueryParam("pedido") String id){
-		if (id.isEmpty()) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		} else {
-			Pedido pedido= service.getPedido(id);
-			return Response.ok().entity(pedido).build();
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response get(@QueryParam("key") String key){
+		Usuario usuario = uService.getUser(key);
+		if (usuario == null) {
+			Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-    }
-	
+		
+		List<Pedido> pedidos = service.getAll(usuario);
+		return Response.status(Response.Status.ACCEPTED).entity(gson.toJson(pedidos)).build();
+	}
+
 	@DELETE
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response cancelar(@QueryParam("key") String key, @QueryParam("id") String id, Usuario usuario){
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response cancelar(@QueryParam("key") String key, @QueryParam("id") int id){
 		//valida usuario com pedido 
-		
+
 		service.cancelarPedido(id);		
-		
-			return Response.accepted().build();
-    }
-	
+
+		return Response.accepted().build();
+	}
+
 }
